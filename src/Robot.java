@@ -3,10 +3,13 @@ import edu.cmu.ri.createlab.hummingbird.HummingbirdRobot;
 
 public class Robot extends HummingbirdRobot {
 
-    // create instance of hummingbirdrobot so we can control it within the class
-    private HummingbirdRobot hBird = new HummingbirdRobot();
+    // Instance Variables
+    private HummingbirdRobot hBird;
 
-    // Instance Variables go here
+    // Constructor to create instance of hummingbirdrobot
+    public Robot() {
+        hBird = new HummingbirdRobot();
+    }
 
 
     // this method will set motor velocities to go in a forward moving direction
@@ -20,6 +23,7 @@ public class Robot extends HummingbirdRobot {
         hBird.setMotorVelocity(1,0);
         hBird.setMotorVelocity(2,0);
     }
+
     // this method will disconnect from the hummingbird and quit the program
     public void disconnect() {
         this.hBird.disconnect();
