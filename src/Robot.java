@@ -1,7 +1,7 @@
 // Import hummingbird library
 import edu.cmu.ri.createlab.hummingbird.HummingbirdRobot;
 
-public class Robot extends HummingbirdRobot {
+public class Robot {
 
     // Instance Variables
     private HummingbirdRobot hBird;
