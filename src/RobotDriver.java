@@ -19,8 +19,8 @@ public class RobotDriver {
         System.out.println("Hello, " + name + "!");
 
         // test motors
-        robot.goForward();
-        Thread.sleep(5000);
+        robot.go(100);
+        Thread.sleep(50000);
         robot.stop();
 
     }

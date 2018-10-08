@@ -16,8 +16,8 @@ public class Robot {
     // takes a percent -100-100 as input
     public void go(int percent) {
         if (percent >= -100 && percent <= 100) {
-            hBird.setMotorVelocity(1,(255.0/100.0) * percent);
-            hBird.setMotorVelocity(2,(255.0/100.0) * percent);
+            hBird.setMotorVelocity(1,(int)(255.0/100.0) * percent);
+            hBird.setMotorVelocity(2,(int)(255.0/100.0) * percent);
         } else {
             System.err.println("Can only accept values between -100 and 100.");
         }
