@@ -24,9 +24,14 @@ public class Robot {
     }
     
     // rotate around by specified degrees
+    //takes a degree from 0 to 360 as input
     public void rotate(int degrees) {
-        // implement this during class with trial and error
-        // best way to program duh
+        if(degrees >= 0 && degrees <= 360){
+            hBird.setMotorVelocity(2,(int)((degrees*(255.0/360.0))));
+            hBird.setMotorVelocity(2,-(int)((degrees*(255.0/360.0))));
+        } else {
+            System.err.println("Can only accept values between 0 and 360.");
+        }
     }
 
     // this method will set motor velocities to 0.
@@ -36,8 +41,57 @@ public class Robot {
     }
 
     // this method will make the eye leds turn on and off
-    public void blinkEyes() {
-        // to be implemented
+    public void blinkEyes() throws InterruptedException{
+        for(int i = 1; i < 5; i++) {
+            hBird.setLED(i,0);
+        }
+        for(int i = 1; i < 3; i++) {
+            hBird.setFullColorLED(i,0,0,0);
+        }
+        Thread.sleep(500);
+        for(int i = 1; i < 5; i++) {
+            hBird.setLED(i,255);
+        }
+        for(int i = 1; i < 3; i++) {
+            hBird.setFullColorLED(i,255,0,0);
+        }
+    }
+    //turns on all 6 eyes
+    public void turnOnEyes(){
+        for(int i = 1; i < 5; i++) {
+            hBird.setLED(i,255);
+        }
+        for(int i = 1; i < 3; i++) {
+            hBird.setFullColorLED(i,255,0,0);
+        }
+    }
+    //this method detects light value and increases or decreases brightness
+    //of leds based on the sensor value
+    public void detectLight(){
+        int s = 255 - hBird.getSensorValue(1);
+        for(int i = 1; i < 5; i++) {
+            hBird.setLED(i,s);
+        }
+        for(int i = 1; i < 3; i++) {
+            hBird.setFullColorLED(i,s,0,0);
+        }
+    }
+
+    // this method takes a string as input and says it
+    public void say(String myStr) {
+        hBird.speak(myStr);
+    }
+    public void findHidingPlace(){
+        boolean spotFound = false;
+        while(spotFound == false){
+            for(int i = 0; i < 5000; i++) {
+                go(100);
+                if(true){
+
+                }
+            }
+            rotate(30);
+        }
     }
 
     // this method will disconnect from the hummingbird and quit the program
