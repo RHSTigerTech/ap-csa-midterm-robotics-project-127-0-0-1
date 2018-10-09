@@ -84,10 +84,13 @@ public class Robot {
     public void findHidingPlace(){
         boolean spotFound = false;
         while(spotFound == false){
+            go(100);
             for(int i = 0; i < 5000; i++) {
-                go(100);
-                if(true){
-
+                if(hBird.getSensorValue(2) >= 200 && hBird.getSensorValue(1) <= 200){
+                    stop();
+                    rotate(150);
+                    spotFound = true;
+                    break;
                 }
             }
             rotate(30);

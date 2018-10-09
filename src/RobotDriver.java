@@ -11,17 +11,25 @@ public class RobotDriver {
         Robot robot = new Robot();
 
         // ask the user for their name
-        System.out.print("Hey what's your name? ");
-        String name = giveMeThe.nextLine();
+        //System.out.print("Hey what's your name? ");
+       // String name = giveMeThe.nextLine();
 
         // say hi in the chat
         System.out.println();
-        System.out.println("Hello, " + name + "!");
-
+        //System.out.println("Hello, " + name + "!");
+        robot.turnOnEyes();
+        Thread.sleep(10000);
+        robot.blinkEyes();
+        Thread.sleep(10000);
+        robot.disconnect();
         // test motors
+        /*
         robot.go(100);
-        Thread.sleep(50000);
+        Thread.sleep(25000);
+        robot.rotate(90);
+        robot.go(100);
+        Thread.sleep(25000);
         robot.stop();
-
+        */
     }
 }
