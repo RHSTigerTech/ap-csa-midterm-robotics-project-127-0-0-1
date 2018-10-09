@@ -1,5 +1,8 @@
 // Import hummingbird library
 import edu.cmu.ri.createlab.hummingbird.HummingbirdRobot;
+import org.json.JSONException;
+
+import java.io.IOException;
 
 public class Robot {
 
@@ -81,6 +84,10 @@ public class Robot {
     public void say(String myStr) {
         hBird.speak(myStr);
     }
+    public String translate(String endLang, String str) throws IOException, JSONException {
+        return Translator.translate("en",endLang,str);
+    }
+    //Repeatedly goes forward for a while and then turns 30 degrees until it hits a wall and it is dark enough
     public void findHidingPlace(){
         boolean spotFound = false;
         while(spotFound == false){
