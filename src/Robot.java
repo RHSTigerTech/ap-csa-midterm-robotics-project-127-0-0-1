@@ -47,10 +47,15 @@ public class Robot {
     // TODO: implement input for lambda functions to be called
     public void detectDistance(int distance, int tolerance) throws InterruptedException
     {
+        int lowerLimit = 0;
+        if (distance - tolerance >= 0)
+            lowerLimit = distance - tolerance;
+
         // tolerance range for distance values
-        for (int i = distance - tolerance; i <= distance + tolerance; i++) {
+        for (int i = lowerLimit; i <= distance + tolerance; i++) {
             if (hBird.getSensorValue(3) == distance) {
                 // action after detecting something in the distance
+
                 this.blinkEyes();
             }
         }
