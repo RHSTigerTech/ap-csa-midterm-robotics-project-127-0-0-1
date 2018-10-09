@@ -32,6 +32,18 @@ public class Translator {
         LANGUAGES.put("Russian", new HashMap(){{put("code", "ru");put("inlang", "русский");}});
     }
 
+    // some functions to make using hashmap easier
+    public static String[] getLanguages() {
+        Object[] langObs = Translator.LANGUAGES.keySet().toArray();
+        String[] langs = new String[langObs.length];
+        int i = 0;
+        for (Object lang : langObs) {
+            langs[i] = lang.toString();
+            i++;
+        }
+        return langs;
+    }
+
     // here is some stuff from the web
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
