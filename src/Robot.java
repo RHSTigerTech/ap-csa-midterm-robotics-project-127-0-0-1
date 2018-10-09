@@ -43,6 +43,16 @@ public class Robot {
         hBird.setMotorVelocity(2,0);
     }
 
+    // this method will stop the robot if it detects something from a specified distance
+    public void detectDistance(int distance) throws InterruptedException
+    {
+        if (hBird.getSensorValue(3) == distance)
+        {
+            // action after detecting something in the distance
+            this.blinkEyes();
+        }
+    }
+
     // this method will make the eye leds turn on and off
     public void blinkEyes() throws InterruptedException{
         for(int i = 1; i < 5; i++) {
@@ -68,6 +78,8 @@ public class Robot {
             hBird.setFullColorLED(i,255,0,0);
         }
     }
+
+
     //this method detects light value and increases or decreases brightness
     //of leds based on the sensor value
     public void detectLight(){
