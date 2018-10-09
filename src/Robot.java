@@ -44,12 +44,15 @@ public class Robot {
     }
 
     // this method will stop the robot if it detects something from a specified distance
-    public void detectDistance(int distance) throws InterruptedException
+    // TODO: implement input for lambda functions to be called
+    public void detectDistance(int distance, int tolerance) throws InterruptedException
     {
-        if (hBird.getSensorValue(3) == distance)
-        {
-            // action after detecting something in the distance
-            this.blinkEyes();
+        // tolerance range for distance values
+        for (int i = distance - tolerance; i <= distance + tolerance; i++) {
+            if (hBird.getSensorValue(3) == distance) {
+                // action after detecting something in the distance
+                this.blinkEyes();
+            }
         }
     }
 
