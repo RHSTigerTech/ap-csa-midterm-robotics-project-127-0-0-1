@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
 import org.json.JSONException;
@@ -37,8 +38,17 @@ public class Translator {
     }
 
     // this method will use above functions to translate text
-    public static String translate(String src, String dest, String text) {
-        // to be implemented
-        return "hello";
+    // input src and dest are the 2 character language codes, txt is any string to be translated
+    public static String translate(String src, String dest, String txt) throws JSONException, IOException {
+
+        // build request url from input
+        String url = "https://us-central1-universalchat-site.cloudfunctions.net/midterm-translator?src="+src+"&dest="+dest+"&txt="+URLEncoder.encode(txt, "UTF-8");
+
+        // submit request to url and store output
+        JSONObject output = readJsonFromUrl(url);
+
+        // return the translated text
+        return output.get("translated").toString();
+
     }
 }
