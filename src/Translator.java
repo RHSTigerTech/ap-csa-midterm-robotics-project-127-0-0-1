@@ -10,8 +10,27 @@ import java.nio.charset.Charset;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Translator {
+
+    // language codes and such
+    // in an amazing nested hashmap
+    // it's basically a nested dictionary in Python
+    // Example: get German code   LANGUAGES.get("German").get("code")
+    public static final Map<String, Map<String, String>> LANGUAGES = new HashMap<>();
+    static {
+        LANGUAGES.put("English", new HashMap(){{put("code", "en");put("inlang", "English");}});
+        LANGUAGES.put("French", new HashMap(){{put("code", "fr");put("inlang", "Français");}});
+        LANGUAGES.put("Spanish", new HashMap(){{put("code", "es");put("inlang", "Español");}});
+        LANGUAGES.put("Chinese", new HashMap(){{put("code", "zh");put("inlang", "中文");}});
+        LANGUAGES.put("Arabic", new HashMap(){{put("code", "ar");put("inlang", "عربى");}});
+        LANGUAGES.put("German", new HashMap(){{put("code", "de");put("inlang", "Deutsche");}});
+        LANGUAGES.put("Japanese", new HashMap(){{put("code", "ja");put("inlang", "日本語");}});
+        LANGUAGES.put("Korean", new HashMap(){{put("code", "ko");put("inlang", "한국어");}});
+        LANGUAGES.put("Russian", new HashMap(){{put("code", "ru");put("inlang", "русский");}});
+    }
 
     // here is some stuff from the web
     private static String readAll(Reader rd) throws IOException {
