@@ -16,8 +16,8 @@ public class Robot extends HummingbirdRobot {
     // takes a percent -100-100 as input
     public void go(int percent) {
         if (percent >= -100 && percent <= 100) {
-            this.setMotorVelocity(1,(int)(255.0/100.0) * percent);
-            this.setMotorVelocity(2,(int)(255.0/100.0) * percent);
+            this.setMotorVelocity(1,-(int)(255.0/100.0) * percent);
+            this.setMotorVelocity(2,-(int)(255.0/100.0) * -percent);
         } else {
             System.err.println("Can only accept values between -100 and 100.");
         }
@@ -25,13 +25,9 @@ public class Robot extends HummingbirdRobot {
     
     // rotate around by specified degrees
     //takes a degree from 0 to 360 as input
-    public void rotate(int degrees) {
-        if(degrees >= 0 && degrees <= 360){
-            this.setMotorVelocity(2,(int)((degrees*(255.0/360.0))));
-            this.setMotorVelocity(2,-(int)((degrees*(255.0/360.0))));
-        } else {
-            System.err.println("Can only accept values between 0 and 360.");
-        }
+    public void rotate() {
+        this.setMotorVelocity(1,255);
+        this.setMotorVelocity(2,255);
     }
 
     // this method will set motor velocities to 0.
@@ -72,9 +68,12 @@ public class Robot extends HummingbirdRobot {
     //of leds based on the sensor value
 
     public void detectLight(){
-        int s = 255 - this.getSensorValue(1);
+        int s = 255 - 3* this.getSensorValue(1);
+        if (s < 30)
+            s = 30;
+        // System.out.println(this.getSensorValue(1));
         for(int i = 1; i < 5; i++) {
-            this.setLED(i,s);
+            this.setLED(i, s);
         }
         for(int i = 1; i < 3; i++) {
             this.setFullColorLED(i,s,0,0);
@@ -88,21 +87,22 @@ public class Robot extends HummingbirdRobot {
     public String translate(String endLang, String str) throws IOException, JSONException {
         return Translator.translate("en",endLang,str);
     }
-    //Repeatedly goes forward for a while and then turns 30 degrees until it hits a wall and it is dark enough
+    //Repeatedly goes forward for a while and then turns 30 degrees until it is dark enough
     public void findHidingPlace(){
         boolean spotFound = false;
         while(spotFound == false){
             go(100);
             for(int i = 0; i < 5000; i++) {
-                if(this.getSensorValue(2) >= 200 && this.getSensorValue(1) <= 200){
+                if(this.getSensorValue(1) <= 30){
                     stop();
-                    rotate(150);
+                    rotate();
                     spotFound = true;
                     break;
                 }
             }
-            rotate(30);
+            rotate();
         }
+        stop();
     }
 
     // this method will disconnect from the hummingbird and quit the program
