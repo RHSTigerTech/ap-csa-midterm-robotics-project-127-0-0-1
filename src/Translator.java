@@ -8,6 +8,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class Translator {
     }
 
     // some functions to make using hashmap easier
+    // getLanguages() will return an array of strings of the names of languages
     public static String[] getLanguages() {
         Object[] langObs = Translator.LANGUAGES.keySet().toArray();
         String[] langs = new String[langObs.length];
@@ -42,6 +44,33 @@ public class Translator {
             i++;
         }
         return langs;
+    }
+
+    // this will return the language code given a language
+    public static String getLanguageCode(String language) {
+        try {
+            return LANGUAGES.get(language).get("code");
+        } catch (Exception e) {
+            return "Language not found";
+        }
+    }
+
+    // this will return the language name in the native language, given a language
+    public static String getLanguageInLang(String language) {
+        try {
+            return LANGUAGES.get(language).get("inlang");
+        } catch (Exception e) {
+            return "Language not found";
+        }
+    }
+
+    // this will return the language name given the language code
+    public static String getLanguageName(String code) {
+        for (String lang : getLanguages()) {
+            if (getLanguageCode(lang).equals(code))
+                return lang;
+        }
+        return "Language not found";
     }
 
     // here is some stuff from the web
@@ -81,5 +110,23 @@ public class Translator {
         // return the translated text
         return output.get("translated").toString();
 
+    }
+
+    // identical to println() but instead translates the input
+    public static void tprintln(String lang, String text) throws JSONException, IOException {
+        if (lang != "en") {
+            System.out.println(translate("en", lang, text));
+        } else {
+            System.out.println(text);
+        }
+    }
+
+    // identical to print() but instead translates the input
+    public static void tprint(String lang, String text) throws JSONException, IOException {
+        if (lang != "en") {
+            System.out.print(translate("en", lang, text));
+        } else {
+            System.out.print(text);
+        }
     }
 }
