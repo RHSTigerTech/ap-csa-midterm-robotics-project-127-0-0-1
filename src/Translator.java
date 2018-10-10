@@ -8,7 +8,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
@@ -114,19 +113,19 @@ public class Translator {
 
     // identical to println() but instead translates the input
     public static void tprintln(String lang, String text) throws JSONException, IOException {
-        if (lang != "en") {
-            System.out.println(translate("en", lang, text));
-        } else {
+        if (lang.equals("en")) {
             System.out.println(text);
+        } else {
+            System.out.println(translate("en", lang, text));
         }
     }
 
     // identical to print() but instead translates the input
     public static void tprint(String lang, String text) throws JSONException, IOException {
-        if (lang != "en") {
-            System.out.print(translate("en", lang, text));
-        } else {
+        if (lang.equals("en")) {
             System.out.print(text);
+        } else {
+            System.out.print(translate("en", lang, text));
         }
     }
 }
