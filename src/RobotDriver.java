@@ -14,20 +14,14 @@ public class RobotDriver {
         // create instance of Robot
         Robot robot = new Robot();
 
+        // turn on the eyes
+        robot.turnOnEyes();
+
         // ask the user for their language
-        String lang;
-        System.out.println("What language do you want the robot to speak?");
-        for (String language : Translator.getLanguages()) {
-            System.out.println(Translator.getLanguageCode(language) + " - " + language + " (" + Translator.getLanguageInLang(language) + ")");
-        }
-        do {
-            System.out.print("Please enter the 2 character language code: ");
-            lang = giveMeThe.nextLine();
-        } while (Translator.getLanguageName(lang).equals("Language not found"));
+        String lang = UI.askForLanguage();
 
         // ask user for their name
-        Translator.tprint(lang,"What's your name? ");
-        String name = giveMeThe.nextLine();
+        String name = UI.tPromptString(lang,"What's your name?");
 
         // say hi in the chat
         System.out.println();
@@ -45,15 +39,7 @@ public class RobotDriver {
         Translator.tprintln(lang,"3. You give me something to say");
 
         // get the user's selection
-        int selection = 0;
-        do {
-            Translator.tprint(lang, "Please make a selection: ");
-            try {
-                selection = giveMeThe.nextInt();
-            } catch (InputMismatchException e) {
-                giveMeThe.nextLine();
-            }
-        } while (selection < 1 || selection > 3);
+        int selection = UI.tSelectionInt(lang, 3);
 
         // take action on their selection
         System.out.println();

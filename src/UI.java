@@ -10,7 +10,7 @@ public class UI {
         if (lang.equals("en")) {
             System.out.println(text);
         } else {
-            System.out.println(translate("en", lang, text));
+            System.out.println(Translator.translate("en", lang, text));
         }
     }
 
@@ -19,12 +19,13 @@ public class UI {
         if (lang.equals("en")) {
             System.out.print(text);
         } else {
-            System.out.print(translate("en", lang, text));
+            System.out.print(Translator.translate("en", lang, text));
         }
     }
 
     // this method prints out all the available languages and asks the user to select one
     public static String askForLanguage() {
+        Scanner giveMeThe = new Scanner(System.in);
         String lang;
         System.out.println("What language do you want the robot to speak?");
         for (String language : Translator.getLanguages()) {
@@ -39,7 +40,7 @@ public class UI {
 
     // this method will prompt for input and then return that input from the user
     // it translates the prompt to the user's language
-    public static String tPromptString(String lang, String prompt) {
+    public static String tPromptString(String lang, String prompt) throws JSONException, IOException {
         Scanner giveMeThe = new Scanner(System.in);
         if (!lang.equals("en"))
             tprint(lang, prompt);
@@ -50,7 +51,8 @@ public class UI {
 
     // this method prompts the user to make a selection between 1 and max
     // translates prompt to users' language
-    public static int tSelectionInt(String lang, int max) {
+    public static int tSelectionInt(String lang, int max) throws JSONException, IOException {
+        Scanner giveMeThe = new Scanner(System.in);
         int selection = 0;
         do {
             if (!lang.equals("en"))
