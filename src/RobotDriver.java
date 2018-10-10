@@ -14,6 +14,8 @@ public class RobotDriver {
         // create instance of Robot
         Robot robot = new Robot();
 
+        //Turn on eyes
+        robot.turnOnEyes();
         // ask the user for their language
         String lang;
         System.out.println("What language do you want the robot to speak?");

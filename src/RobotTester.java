@@ -14,12 +14,10 @@ public class RobotTester {
         // String name = giveMeThe.nextLine();
 
         // say hi in the chat
-        System.out.println();
-        //System.out.println("Hello, " + name + "!");
-        robot.turnOnEyes();
-        Thread.sleep(10000);
-        robot.blinkEyes();
-        Thread.sleep(10000);
+        //robot.go(100);
+        //Thread.sleep(5000);
+        robot.rotate(90);
+        Thread.sleep(5000);
         robot.disconnect();
         // test motors
         /*
