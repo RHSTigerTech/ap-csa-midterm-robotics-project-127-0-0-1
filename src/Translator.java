@@ -30,6 +30,7 @@ public class Translator {
         LANGUAGES.put("Japanese", new HashMap(){{put("code", "ja");put("inlang", "日本語");}});
         LANGUAGES.put("Korean", new HashMap(){{put("code", "ko");put("inlang", "한국어");}});
         LANGUAGES.put("Russian", new HashMap(){{put("code", "ru");put("inlang", "русский");}});
+        LANGUAGES.put("Italian", new HashMap(){{put("code", "it");put("inlang", "Italiano");}});
     }
 
     // some functions to make using hashmap easier
