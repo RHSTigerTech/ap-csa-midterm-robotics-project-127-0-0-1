@@ -38,6 +38,8 @@ public class RobotDriver {
         UI.tprintln(lang,"2. Find a good hiding spot");
         UI.tprintln(lang,"3. You give me something to say");
 
+        UI.tprintln(lang, "4. Donut mode");
+
         // get the user's selection
         int selection = UI.tSelectionInt(lang, 3);
 
@@ -66,6 +68,10 @@ public class RobotDriver {
             else
                 robot.say(sayThis);
             Thread.sleep(3000);
+        } else if (selection == 4) {
+            // Rotate around in circles
+            robot.rotate(360);
+            Thread.sleep(10000);
         }
 
     }

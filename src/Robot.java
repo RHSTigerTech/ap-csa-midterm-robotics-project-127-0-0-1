@@ -40,24 +40,6 @@ public class Robot extends HummingbirdRobot {
         this.setMotorVelocity(2,0);
     }
 
-    // this method will stop the robot if it detects something from a specified distance
-    // TODO: implement input for lambda functions to be called
-    public void detectDistance(int distance, int tolerance) throws InterruptedException
-    {
-        int lowerLimit = 0;
-        if (distance - tolerance >= 0)
-            lowerLimit = distance - tolerance;
-
-        // tolerance range for distance values
-        for (int i = lowerLimit; i <= distance + tolerance; i++) {
-            if (this.getSensorValue(3) == distance) {
-                // action after detecting something in the distance
-
-                this.blinkEyes();
-            }
-        }
-    }
-
     // this method will make the eye leds turn on and off
     public void blinkEyes() throws InterruptedException{
         for(int i = 1; i < 5; i++) {
@@ -74,6 +56,7 @@ public class Robot extends HummingbirdRobot {
             this.setFullColorLED(i,255,0,0);
         }
     }
+
     //turns on all 6 eyes
     public void turnOnEyes(){
         for(int i = 1; i < 5; i++) {
@@ -87,6 +70,7 @@ public class Robot extends HummingbirdRobot {
 
     //this method detects light value and increases or decreases brightness
     //of leds based on the sensor value
+
     public void detectLight(){
         int s = 255 - this.getSensorValue(1);
         for(int i = 1; i < 5; i++) {
