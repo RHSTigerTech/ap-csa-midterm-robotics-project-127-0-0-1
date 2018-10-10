@@ -65,10 +65,12 @@ public class RobotDriver {
             // give something for robot to say
             Translator.tprintln(lang,"Okay, what do you want me to say? ");
             String sayThis = giveMeThe.nextLine();
+            sayThis = giveMeThe.nextLine();
             if (!lang.equals("en"))
                 robot.say(Translator.translate("en", lang, sayThis));
             else
                 robot.say(sayThis);
+            Thread.sleep(3000);
         }
 
 
