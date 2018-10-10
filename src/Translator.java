@@ -111,21 +111,4 @@ public class Translator {
 
     }
 
-    // identical to println() but instead translates the input
-    public static void tprintln(String lang, String text) throws JSONException, IOException {
-        if (lang.equals("en")) {
-            System.out.println(text);
-        } else {
-            System.out.println(translate("en", lang, text));
-        }
-    }
-
-    // identical to print() but instead translates the input
-    public static void tprint(String lang, String text) throws JSONException, IOException {
-        if (lang.equals("en")) {
-            System.out.print(text);
-        } else {
-            System.out.print(translate("en", lang, text));
-        }
-    }
 }
