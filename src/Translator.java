@@ -97,6 +97,7 @@ public class Translator {
         }
     }
 
+    // probably the most important part of this class
     // this method will use above functions to translate text
     // input src and dest are the 2 character language codes, txt is any string to be translated
     public static String translate(String src, String dest, String txt) throws JSONException, IOException {
