@@ -26,7 +26,7 @@ public class RobotDriver {
 
         // say hi in the chat
         System.out.println();
-        UI.tprintln(lang, "Hello, " + name + "!");
+        UI.tprintln(lang, "Hello, " + name + "! I am MAMA, the Multilingual Arachnid Mechanical Apparatus");
         UI.tprintln(lang, "I am speaking in the language that you selected!");
         if (!lang.equals("en")) {
             UI.tprintln(lang, "It may take a split second for each line to appear, as the robot has to translate.");
@@ -64,6 +64,8 @@ public class RobotDriver {
             } else if (selection == 2) {
                 // find hiding spot
                 robot.findHidingPlace();
+                //say something
+                robot.say("I found a hiding spot!");
                 // blink eyes for 3 seconds
                 for (int i = 1; i <= 3; i++) {
                     robot.blinkEyes();
