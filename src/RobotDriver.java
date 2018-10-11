@@ -21,15 +21,15 @@ public class RobotDriver {
         String lang = UI.askForLanguage();
 
         // ask user for their name
-        String name = UI.tPromptString(lang,"What's your name?");
-        name = name.toUpperCase().charAt(0) + name.substring(1,name.length());
+        String name = UI.tPromptString(lang, "What's your name?");
+        name = name.toUpperCase().charAt(0) + name.substring(1, name.length());
 
         // say hi in the chat
         System.out.println();
-        UI.tprintln(lang,"Hello, " + name + "!");
-        UI.tprintln(lang,"I am speaking in the language that you selected!");
+        UI.tprintln(lang, "Hello, " + name + "!");
+        UI.tprintln(lang, "I am speaking in the language that you selected!");
         if (!lang.equals("en")) {
-            UI.tprintln(lang,"It may take a split second for each line to appear, as the robot has to translate.");
+            UI.tprintln(lang, "It may take a split second for each line to appear, as the robot has to translate.");
         }
         System.out.println();
 
@@ -64,6 +64,10 @@ public class RobotDriver {
             } else if (selection == 2) {
                 // find hiding spot
                 robot.findHidingPlace();
+                // blink eyes for 3 seconds
+                for (int i = 1; i <= 3; i++) {
+                    robot.blinkEyes();
+                }
 
             } else if (selection == 3) {
                 // give something for robot to say
