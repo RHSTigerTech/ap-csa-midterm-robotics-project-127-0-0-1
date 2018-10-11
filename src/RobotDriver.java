@@ -86,6 +86,8 @@ public class RobotDriver {
                 robot.say("WEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                 Thread.sleep(8000);
                 robot.stop();
+                robot.say("Wow, I am dizzy.");
+                Thread.sleep(3000);
 
             } else if (selection == 5) {
                 // Adjusts LEDs to the light

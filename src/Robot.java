@@ -37,6 +37,7 @@ public class Robot extends HummingbirdRobot {
         this.setMotorVelocity(2, 0);
     }
 
+
     // this method will make the eye leds turn on and off
     public void blinkEyes() throws InterruptedException {
         for (int i = 1; i < 5; i++) {
