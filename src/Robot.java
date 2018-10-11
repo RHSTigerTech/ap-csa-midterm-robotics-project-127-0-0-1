@@ -91,7 +91,7 @@ public class Robot extends HummingbirdRobot {
         return Translator.translate("en", endLang, str);
     }
 
-    //Repeatedly goes forward for a while and then turns 30 degrees until it is dark enough
+    //Repeatedly goes forward for a while and then turns until it is dark enough
     public void findHidingPlace() {
         boolean spotFound = false;
         while (spotFound == false) {
